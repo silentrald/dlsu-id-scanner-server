@@ -5,7 +5,7 @@ import { addEvent } from '@use-cases/events';
 
 /**
  * @openapi
- * /events:
+ * /event:
  *   post:
  *    summary: Creates a event
  *    tags: [events]

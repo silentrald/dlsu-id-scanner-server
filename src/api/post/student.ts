@@ -5,7 +5,7 @@ import { addStudent } from '@use-cases/students';
 
 /**
  * @openapi
- * /students:
+ * /student:
  *   post:
  *    summary: Creates a student
  *    tags: [users]

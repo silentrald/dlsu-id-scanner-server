@@ -5,10 +5,10 @@ import { addAttendance } from '@use-cases/attendances';
 
 /**
  * @openapi
- * /tap/in:
+ * /attendance/tap-in:
  *   post:
  *    summary: Creates an attendance
- *    tags: [tap]
+ *    tags: [attendances]
  *    security:
  *      - cookieAuth: ['temporary']
  *    produces:

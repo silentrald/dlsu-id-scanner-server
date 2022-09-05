@@ -4,6 +4,7 @@ import { DbClient } from '@db/core/types';
 import { AttendanceDb } from './types';
 import { Attendance } from '@entities/attendances/types';
 import { Student } from '@entities/students/types';
+import AttendanceDbError from './error';
 
 const buildAttendanceDb = ({
   pg,
@@ -57,12 +58,20 @@ const buildAttendanceDb = ({
     },
 
     addAttendance: async (attendance) => {
-      const { rows } = await pg.query<any>(addAttendanceQuery, [
-        attendance.getStudentId(),
-        attendance.getEventId(),
-      ]);
+      try {
+        const { rows } = await pg.query<any>(addAttendanceQuery, [
+          attendance.getStudentId(),
+          attendance.getEventId(),
+        ]);
 
-      return rows[0].id;
+        return rows[0].id;
+      } catch (err: any) {
+        if (err.constraint && err.constraint === `${table}_unique`) {
+          throw new AttendanceDbError('Attendance already exists');
+        }
+
+        throw new AttendanceDbError('Db Error');
+      }
     },
 
     updateAttendance: async (attendance) => {

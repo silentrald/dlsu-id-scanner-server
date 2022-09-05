@@ -49,7 +49,15 @@ const buildAddAttendanceUseCase = ({
 
       const id = await attendanceDb.addAttendance(attendance);
       return makeResponse({
-        body: id,
+        body: {
+          id,
+          student: {
+            id: student.getId(),
+            idNumber: student.getIdNumber(),
+            fname: student.getFname(),
+            lname: student.getLname(),
+          }
+        },
         status: 201,
       });
     } catch (err) {

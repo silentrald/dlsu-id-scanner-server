@@ -5,10 +5,10 @@ import { updateAttendance } from '@use-cases/attendances';
 
 /**
  * @openapi
- * /tap/out:
+ * /attendance/tap-out:
  *   post:
  *    summary: Adds a timeout to the attendance
- *    tags: [tap]
+ *    tags: [attendances]
  *    security:
  *      - cookieAuth: ['temporary']
  *    produces:

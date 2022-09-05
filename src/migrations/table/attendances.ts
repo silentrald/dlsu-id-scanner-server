@@ -9,7 +9,8 @@ const attendanceMigrations: SqlStatements = {
     student_id  UUID        NOT NULL,
     event_id    UUID        NOT NULL,
     time_in     TIMESTAMPTZ NOT NULL DEFAULT now(),
-    time_out    TIMESTAMPTZ
+    time_out    TIMESTAMPTZ,
+    CONSTRAINT ${TABLE}_unique UNIQUE(student_id, event_id)
   );
   `,
 

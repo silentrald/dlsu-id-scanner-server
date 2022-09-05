@@ -50,6 +50,14 @@ const buildUpdateAttendanceUseCase = ({
 
       const updated = await attendanceDb.updateAttendance(attendance);
       return makeResponse(updated ? {
+        body: {
+          student: {
+            id: student.getId(),
+            idNumber: student.getIdNumber(),
+            fname: student.getFname(),
+            lname: student.getLname(),
+          }
+        },
         status: 200
       } : {
         body: 'Not updated',
