@@ -1,5 +1,4 @@
 import { ARequest, AResponse } from '@adapters/http/types';
-import { UserDb } from '@db/users/types';
 import { Logger } from '@interfaces/logger/types';
 
 import { makeResponse } from '@adapters/http/express';

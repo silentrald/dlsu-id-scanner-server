@@ -96,5 +96,5 @@ app.use('/docs', swaggerUi.serve);
 app.get('/docs', swaggerUi.setup(openapiSpecification));
 
 app.listen(PORT, HOST, () => {
-  logger.info(`Running at http://localhost:${PORT}`);
+  logger.info(`Running at http://${HOST}:${PORT}`);
 });
